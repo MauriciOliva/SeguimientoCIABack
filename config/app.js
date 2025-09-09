@@ -5,9 +5,22 @@ import morgan from "morgan"
 import cors from "cors"
 import helmet from "helmet"
 import agendaRoutes from "../src/Agenda/Agenda.routes.js"
+import rutasHealth from "../src/Agenda/rutas.healt.js"
 
 const config = (app) => {
-    app.use(cors())
+
+    const corsOptions = {
+        origin: [
+            'https://seguimiento-cia-back.vercel.app',
+            'seguimiento-cia.vercel.app'
+        ],
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'], // ✅ Agregar PATCH
+        allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Requested-With'],
+        optionsSuccessStatus: 200
+    };
+
+    app.use(cors(corsOptions))
+    app.options('*', cors(corsOptions)); // Habilitar preflight para todas las rutas
     app.use(express.json())
     app.use(express.urlencoded({ extended: true }))
     app.use(helmet())
@@ -16,6 +29,7 @@ const config = (app) => {
 
 const routes = (app) => {
     app.use('/api/v1/agenda', agendaRoutes)
+    app.use('/health', rutasHealth)
 }
 
 export const initServer = () => {
