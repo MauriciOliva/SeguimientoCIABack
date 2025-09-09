@@ -12,7 +12,7 @@ const config = (app) => {
     const corsOptions = {
         origin: [
             'https://seguimiento-cia-back.vercel.app',
-            'seguimiento-cia.vercel.app'
+            'https://seguimiento-cia.vercel.app'
         ],
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'], // ✅ Agregar PATCH
         allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Requested-With'],
