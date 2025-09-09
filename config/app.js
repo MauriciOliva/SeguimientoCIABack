@@ -23,7 +23,6 @@ const config = (app) => {
     };
 
     app.use(cors(corsOptions));
-    app.options('*', cors(corsOptions)); // Habilitar preflight para todas las rutas
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
     app.use(helmet());
