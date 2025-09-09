@@ -12,9 +12,9 @@ const config = (app) => {
     // ✅ CONFIGURACIÓN CORRECTA DE CORS
     const corsOptions = {
         origin: [
-            'https://seguimiento-cia.vercel.app', // FRONTEND en producción
-            'http://localhost:5173',              // FRONTEND en desarrollo Vite
-            'http://localhost:3000'               // FRONTEND en desarrollo React
+            'https://seguimiento-cia.vercel.app', 
+            'http://localhost:5173',              
+            'http://localhost:3000'               
         ],
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
         allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
