@@ -61,6 +61,14 @@ const agendaSchema = new Schema(
             type: Date,
             required: false
         },
+        notificaciones: {
+            enviada3DiasAntes: { type: Boolean, default: false },
+            enviada1DiaAntes: { type: Boolean, default: false },
+            enviadaDiaMismo: { type: Boolean, default: false }
+        },  
+    }, 
+    { 
+        timestamps: true 
     }
 );
 
