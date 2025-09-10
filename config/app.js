@@ -13,6 +13,7 @@ const config = (app) => {
     const corsOptions = {
         origin: [
             'https://seguimiento-cia.vercel.app', 
+            'http://seguimiento-cia-back.vercel.app',
             'http://localhost:5173',              
             'http://localhost:3000'               
         ],
@@ -40,6 +41,7 @@ const routes = (app) => {
             timestamp: new Date(),
             allowedOrigins: [
                 'https://seguimiento-cia.vercel.app',
+                'http://seguimiento-cia-back.vercel.app',
                 'http://localhost:5173',
                 'http://localhost:3000'
             ]
