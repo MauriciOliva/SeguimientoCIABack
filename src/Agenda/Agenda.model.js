@@ -66,6 +66,11 @@ const agendaSchema = new Schema(
             enviada1DiaAntes: { type: Boolean, default: false },
             enviadaDiaMismo: { type: Boolean, default: false }
         },  
+        estado: { 
+            type: [String], 
+            required: true ,
+            enum:['Acepto visita','Reagendar Visita','Volver a llamar','Enviar Correo','Cliente Interesado','Fecha de seguimiento','Cotizacion Enviada','Cierre de Venta'],
+        }
     }, 
     { 
         timestamps: true 

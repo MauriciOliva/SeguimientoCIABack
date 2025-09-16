@@ -7,6 +7,7 @@ import cors from "cors"
 import helmet from "helmet"
 import agendaRoutes from "../src/Agenda/Agenda.routes.js"
 import rutasHealth from "../src/Agenda/rutas.healt.js"
+import { scheduleCleanup } from "../src/Agenda/AutoDelete.js"
 
 const config = (app) => {
     // ✅ CONFIGURACIÓN CORRECTA DE CORS
@@ -15,7 +16,7 @@ const config = (app) => {
             'https://seguimiento-cia.vercel.app', 
             'http://seguimiento-cia-back.vercel.app',
             'http://localhost:5173',              
-            'http://localhost:3000'               
+            'http://localhost:3605'               
         ],
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
         allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
@@ -54,6 +55,7 @@ export const initServer = () => {
     try {
         config(app);
         routes(app);
+        scheduleCleanup(); 
         app.listen(process.env.PORT);
         console.log(`Server listening on port ${process.env.PORT}`);
     } catch (error) {

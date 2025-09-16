@@ -103,3 +103,26 @@ export const deleteAgenda = async (req, res) => {
         });
     }   
 };
+
+export const deleteExpiredVisits = async (req, res) => {
+    try {
+        const currentDate = new Date();
+        
+        // Eliminar agendas con fecha de visita anterior a la fecha actual
+        const result = await Agenda.deleteMany({ 
+            visita: { $lt: currentDate } 
+        });
+        
+        res.status(200).json({
+            success: true,
+            message: `Deleted ${result.deletedCount} expired visits`,
+            data: result
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'Error deleting expired visits',
+            error: error.message
+        });
+    }
+};
